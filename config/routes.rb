@@ -1,4 +1,6 @@
 Sorejanai::Application.routes.draw do
+  root 'itemsearch#index'
+  post '/search' => 'itemsearch#search'
   resources :articles
 
   # The priority is based upon order of creation: first created -> highest priority.
