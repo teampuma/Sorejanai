@@ -11,9 +11,14 @@
 <ul>
     <% item=@jsonData['Items'][0]%>
     <%= link_to item['Item']['itemName'], item['Item']['affiliateUrl'] %>
-    <% item['Item']['mediumImageUrls'].each do |image| %>
+    <br><% item['Item']['mediumImageUrls'].each do |image| %>
     <img src=<%= image['imageUrl']%> alt="画像がありません" width=100 height=100>
     <% end%>
-    <br>もしかして:ふとん<%#= @keyword%>
+    <br>もしかして:<%= @keyword%>
+    <br>to Roman:<%= @keyword.to_roman%>
+    <br>分解:<%= chr=@keyword.to_roman.split("")%>
+    <br><%= vowel=chr.select {|item| item == "a" || item == "i" || item == "u" || item == "e" || item == "o" || item == "n" }%>
+    <br>母音:<%= vowel.join%>
+    <br><%= vowel.join.to_hiragana%>
 </ul>
 <% end %>
