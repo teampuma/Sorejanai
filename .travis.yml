@@ -8,3 +8,4 @@ deploy:
   app: boiling-taiga-1044
   on:
     repo: teampuma/Sorejanai
+  run: "rake db:migrate RAILS_ENV=production"
