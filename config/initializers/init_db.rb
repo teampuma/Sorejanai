@@ -1,6 +1,6 @@
 # coding: utf-8
 require 'json'
-require 'CSV'
+require 'csv'
 
 
 # ファイル存在チェック
