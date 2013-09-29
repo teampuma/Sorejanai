@@ -10,6 +10,9 @@ require 'csv'
 #  break
 #end
 
+c = Mongoid::Config
+p c.sessions
+
 # 参照
 refs = Word.all
 refs.each do |ref|
