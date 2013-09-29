@@ -1,7 +1,7 @@
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      uri: <%= ENV["MONGOLAB_URI"] %>
 development:
   # Configure available database sessions. (required)
   sessions:
@@ -70,7 +70,7 @@ test:
   sessions:
     default:
       database: Sorejanai_test
-      hosts: <%= ENV['MONGO_TEST'] %>
+      hosts: <%= ENV["MONGO_TEST"] %>
       options:
         consistency: :strong
         # In the test environment we lower the retries and retry interval to
