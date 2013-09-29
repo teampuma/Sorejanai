@@ -1,5 +1,4 @@
 language: ruby
-script: "bundle exec rake db:migrate RAILS_ENV=production"
 rvm:
 - 2.0.0
 deploy:
