@@ -11,18 +11,18 @@ require 'csv'
 #end
 
 # 参照
-#refs = Word.all
-#refs.each do |ref|
-#  p ref
-#end
+refs = Word.all
+refs.each do |ref|
+  p ref
+end
 
-#p refs.count
+p refs.count
 
 # 削除
-#refs.delete
+refs.delete
 
 # 作成
-#Word.create(surface: "test")
+Word.create(surface: "test")
 
 
 

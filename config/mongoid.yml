@@ -69,13 +69,11 @@ development:
 test:
   sessions:
     default:
-      uri: <%= ENV['MONGO_TEST_UR'] %>
-      # database: sorejanai_test
-      # hosts:
-      #   - localhost:27017
-      # options:
-      #   consistency: :strong
+      database: Sorejanai_test
+      hosts: <%= ENV['MONGO_TEST'] %>
+      options:
+        consistency: :strong
         # In the test environment we lower the retries and retry interval to
         # low amounts for fast failures.
-      #   max_retries: 1
-      #   retry_interval: 0
+        max_retries: 1
+        retry_interval: 0
