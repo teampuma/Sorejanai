@@ -14,7 +14,6 @@ c = Mongoid::Config
 
 # 参照
 refs = Word.all
-p c.sessions
 
 refs.each do |ref|
   p ref
