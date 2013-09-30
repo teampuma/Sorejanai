@@ -3,7 +3,7 @@ rvm:
 - 2.0.0
 env:
   global:
-    - secure: "B3WkwnrfAsLLnW584SdHRx/3rk6Wvl7/OwOGOOQOM2UZTVB3gyzszcvvCyzawlXHeR0pichjTbl/OYIxF5rpLOo8G4q3ZhAKdW1KdyYkXDfAUBU+X2I7NsOtzKFd062Vrwz6aMQYLVeKCzYtO4KKXVbCpW5gxeuXL+SH/fxAIuM="
+    - secure: "KIe5z4VS5CxQ5MEz/MUV5HS7csnQdZgxQrTmt3nxCgCgk/Jk6NIRV3N117Mvwb9zsVKqx1C8kn4rDyVP+lscT5eQ0OCqOTR6uDYz6DCLjaEns4GjNPYNXo4kWxEtjjL1BGZgN12GftYnNtoZkFSbmzb8S/L0LPw/k2IYZQ+Pkek="
 deploy:
   provider: heroku
   api_key:

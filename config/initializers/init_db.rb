@@ -11,7 +11,6 @@ require 'csv'
 #end
 
 c = Mongoid::Config
-p c.sessions
 
 # 参照
 refs = Word.all
