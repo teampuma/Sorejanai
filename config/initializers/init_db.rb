@@ -1,5 +1,4 @@
 # coding: utf-8
-require 'json'
 require 'csv'
 
 
@@ -9,23 +8,6 @@ require 'csv'
 #  p row
 #  break
 #end
-
-c = Mongoid::Config
-
-# 参照
-refs = Word.all
-
-refs.each do |ref|
-  p ref
-end
-
-
-# 削除
-refs.delete
-
-# 作成
-Word.create(surface: "test")
-
 
 
 
