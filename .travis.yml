@@ -1,6 +1,9 @@
 language: ruby
 rvm:
 - 2.0.0
+env:
+  global:
+    - secure: "B3WkwnrfAsLLnW584SdHRx/3rk6Wvl7/OwOGOOQOM2UZTVB3gyzszcvvCyzawlXHeR0pichjTbl/OYIxF5rpLOo8G4q3ZhAKdW1KdyYkXDfAUBU+X2I7NsOtzKFd062Vrwz6aMQYLVeKCzYtO4KKXVbCpW5gxeuXL+SH/fxAIuM="
 deploy:
   provider: heroku
   api_key:
