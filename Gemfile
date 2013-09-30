@@ -40,6 +40,8 @@ gem 'bson_ext'
 gem 'origin'
 gem 'moped'
 
+# herokuでのassets:precompileで失敗するのを回避するためのgem
+# DBの設定で失敗していた
 group :production do
   gem 'rails_12factor'
 end

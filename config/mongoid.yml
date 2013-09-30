@@ -70,6 +70,8 @@ test:
   sessions:
     default:
       uri: <%= ENV["MONGOLAB_TEST_URI"] %>
+      # テスト用の設定は上記環境変数にて管理。.travis.ymlに設定を追加する必要がある
+      # 暗号化はtravisコマンドで行う。githubの保存先をキーにしてる？
       # database: sorejanai_test
       # hosts: <%= ENV["MONGO_TEST"] %>
       # options:
