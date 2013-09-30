@@ -14,15 +14,12 @@ c = Mongoid::Config
 
 # 参照
 refs = Word.all
-begin
-  refs.each do |ref|
-    p ref
-  end
-rescue StandardError
-  p c.sessions
+p c.sessions
+
+refs.each do |ref|
+  p ref
 end
 
-p refs.count
 
 # 削除
 refs.delete
