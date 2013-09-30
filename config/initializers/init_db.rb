@@ -14,8 +14,12 @@ c = Mongoid::Config
 
 # 参照
 refs = Word.all
-refs.each do |ref|
-  p ref
+begin
+  refs.each do |ref|
+    p ref
+  end
+rescue StandardError
+  p c.sessions
 end
 
 p refs.count
