@@ -6,7 +6,7 @@ gem 'rails', '4.0.0'
 gem "romankana", "~> 0.1.3"
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '4.0.0'
+#gem 'sass-rails', '4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '2.1.1'
@@ -45,6 +45,13 @@ gem 'moped'
 group :production do
   gem 'rails_12factor'
 end
+
+#Bootstrapのセットアップ
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'execjs'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

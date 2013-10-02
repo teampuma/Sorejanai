@@ -1,6 +1,18 @@
-<h1><%= link_to 'sorezyanai search', root_path %></h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--どうやったら段下げが出来るかわからない！-->
 
-ソレじゃない
+<h1><%= link_to 'Sorejanai search　( ﾟдﾟ)', root_path %></h1>
+
+
+探しても探してもソレじゃないものしか出てこないコンピュータ。<br>
+お詫びのしるしにライム踏んでラップして感謝します。<br>
+また３の倍数でノリツッコミして５の倍数で占いをします。<br>
+<br>
+
 <form action="<%= search_path %>" method="POST">
     <input type="input" name="keyword" value="<%= @keyword %>" required>
     <input type="submit" value="Search">
@@ -21,4 +33,26 @@
     <br>母音:<%= vowel.join%>
     <br><%= vowel.join.to_hiragana%>
 </ul>
+
+<br>
+<!-- 決め打ちサンプル -->
+Hey! Yo! ( ﾟдﾟ)<br>
+
+おまえのえんどう<br>
+夏のウインドウ<br>
+<br>
+さがすぜ楽天<br>
+春の祭典<br>
+
+<br>
+踏むぜライム<br>
+サマータイム<br>
+<br>
+そもそも痛車<br>
+なぜに２トン車<br>
+ご利用いただきマジ感謝(・∀・)<br>
+
+
+
+
 <% end %>
