@@ -1,6 +1,8 @@
 # coding: utf-8
 require 'csv'
 
+# 削除予定
+# DBを初期化するのはやめる（デプロイ時にエラーがおこるから）
 
 # ファイル存在チェック
 #path = File.expand_path("db/ContentW.csv")
@@ -8,7 +10,6 @@ require 'csv'
 #  p row
 #  break
 #end
-
 
 
 # Word_Collectionをクリアする
