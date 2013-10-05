@@ -17,7 +17,10 @@ class ItemsearchController < ApplicationController
           'affiliateId'   => '11b23d84.1af290b5.11b23d85.b706ce01',
           'keyword'       => @keyword
       })
-      p @keyword.to_roman
+      @roman= @keyword.to_roman
+      @selectVowel=@roman.split("").select {|item| item == "a" || item == "i" || item == "u" || item == "e" || item == "o" || item == "n" }
+      @vowel=@selectVowel.join
+      @hiragana=@vowel.to_hiragana
       @jsonData = JSON.parse data
       p @jsonData
     rescue HTTPClient::BadResponseError => e
