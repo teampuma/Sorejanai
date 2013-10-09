@@ -21,6 +21,7 @@ class Word
       Word.create(surface: "牛丼", reading: "ぎゅうどん", reading_seion: "ぎゅうとん", count_hira:5)
       Word.create(surface: "うどん", reading: "うどん", reading_seion: "うとん", count_hira:3)
       Word.create(surface: "ヴィトン", reading: "びとん", reading_seion: "ひとん", count_hira:3)
+      Word.create(surface: "Cloudn", reading: "くらうどん", reading_seion: "くらうとん", count_hira:5)
     end
   end
   
