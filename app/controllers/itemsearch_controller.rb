@@ -22,11 +22,22 @@ class ItemsearchController < ApplicationController
       @vowel=@selectVowel.join
       @hiragana=@vowel.to_hiragana
       @jsonData = JSON.parse data
-      p @jsonData
+      @jsonData
     rescue HTTPClient::BadResponseError => e
     rescue HTTPClient::TimeoutError => e
     end
 
     render 'itemsearch/index'
   end
+
+  private
+    def get_one_word
+      Word.init
+      # 語尾ふた文字が共通する言葉を取得
+      search = /#{make_search_str(@keyword, 2)}$/
+      # 検索して、複数件の場合ランダムに返却
+      refs = Word.any_in(reading_seion: search)
+      return refs[rand(max=refs.count)].surface
+    end
+
 end

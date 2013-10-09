@@ -12,7 +12,7 @@ class ItemsearchControllerTest  < ActionController::TestCase
   end
 
   test "access_search" do
-    # indexにアクセス
+    # searchにpost
     post(:search, {:keyword => "うどん"})
     # 200を返却
     assert_response(:success)
