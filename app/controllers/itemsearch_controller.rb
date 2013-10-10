@@ -10,20 +10,25 @@ class ItemsearchController < ApplicationController
 
     @jsonData = nil
     @errorMeg = nil
-    @word=get_one_word
+    @word = nil
     begin
-      data = httpClient.get_content('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20130805', {
-          'applicationId' => '1012622615583035302',
-          'affiliateId'   => '11b23d84.1af290b5.11b23d85.b706ce01',
-          'keyword'       => @word
-      })
+      count = 0
+      until count > 0
+        @word=get_one_word
+        data = httpClient.get_content('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20130805', {
+            'applicationId' => '1012622615583035302',
+            'affiliateId'   => '11b23d84.1af290b5.11b23d85.b706ce01',
+            'keyword'       => @word
+        })
+        @jsonData = JSON.parse data
+        count = @jsonData['count']
+      end
 =begin
       @roman= @keyword.to_roman
       @selectVowel=@roman.split("").select {|item| item == "a" || item == "i" || item == "u" || item == "e" || item == "o" || item == "n" }
       @vowel=@selectVowel.join
       @hiragana=@vowel.to_hiragana
 =end
-      @jsonData = JSON.parse data
       @jsonData
       @template="相・対・性・うどん
 
