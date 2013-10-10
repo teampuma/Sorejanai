@@ -39,7 +39,7 @@ class WordTest < ActiveSupport::TestCase
     refs = Word.any_in(reading_seion: /とん$/)
     
     # 件数のチェック
-    assert_equal(4, refs.count)
+    assert_equal(5, refs.count)
   end
 
 end

@@ -18,7 +18,7 @@ class Word
     # ダミーとしてデータを格納する
     if Word.count == 0 then
       Word.create(surface: "布団", reading: "ふとん", reading_seion: "ふとん", count_hira:3)
-      Word.create(surface: "牛丼", reading: "ぎゅうどん", reading_seion: "ぎゅうとん", count_hira:5)
+      Word.create(surface: "牛丼", reading: "ぎゅうどん", reading_seion: "きゅうとん", count_hira:5)
       Word.create(surface: "うどん", reading: "うどん", reading_seion: "うとん", count_hira:3)
       Word.create(surface: "ヴィトン", reading: "びとん", reading_seion: "ひとん", count_hira:3)
       Word.create(surface: "Cloudn", reading: "くらうどん", reading_seion: "くらうとん", count_hira:5)
