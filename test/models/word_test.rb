@@ -4,6 +4,8 @@ require 'test_helper'
 class WordTest < ActiveSupport::TestCase
   def setup
     # テストデータの作成
+    refs = Word.all
+    refs.delete
   end
   
   def teardown

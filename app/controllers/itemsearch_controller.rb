@@ -15,7 +15,7 @@ class ItemsearchController < ApplicationController
       data = httpClient.get_content('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20130805', {
           'applicationId' => '1012622615583035302',
           'affiliateId'   => '11b23d84.1af290b5.11b23d85.b706ce01',
-          'keyword'       => @keyword
+          'keyword'       => get_one_word
       })
       @roman= @keyword.to_roman
       @selectVowel=@roman.split("").select {|item| item == "a" || item == "i" || item == "u" || item == "e" || item == "o" || item == "n" }
@@ -37,6 +37,9 @@ class ItemsearchController < ApplicationController
       search = /#{make_search_str(@keyword, 2)}$/
       # 検索して、複数件の場合ランダムに返却
       refs = Word.any_in(reading_seion: search)
+      if refs.count == 0 then
+        return "ナシ"        
+      end
       return refs[rand(max=refs.count)].surface
     end
 
