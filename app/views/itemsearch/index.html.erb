@@ -26,14 +26,18 @@
     <br><% item['Item']['mediumImageUrls'].each do |image| %>
     <img src=<%= image['imageUrl']%> alt="画像がありません" width=100 height=100>
     <% end%>
-    <br>もしかして:<%= @keyword%>
-    <br>ローマ字:<%= @roman%>
-    <br>母音:<%= @vowel%>
-    <br>ひらがな:<%= @hiragana%>
+    <br>もしかして:<%= @word %>
+    <!--<!%= @keyword%>
+    <br>ローマ字:<!%= @roman%>
+    <br>母音:<!%= @vowel%>
+    <br>ひらがな:<!%= @hiragana%>-->
 </ul>
 
 <br>
+<%= @template%>
+
 <!-- 決め打ちサンプル -->
+<!--
 \( ﾟдﾟ)  Hey! Yo!  ( ﾟдﾟ)/ Here we go!<br>
 <br>
 おまえのえんどう<br>
@@ -49,6 +53,7 @@
 あるいは痛車<br>
 だけど２トン車<br>
 ご利用いただきマジ感謝 (・∀・)<br>
+-->
 <br>
 
 
