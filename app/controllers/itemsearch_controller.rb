@@ -63,7 +63,8 @@ class ItemsearchController < ApplicationController
     def get_one_word
       Word.init
       # 語尾ふた文字が共通する言葉を取得
-      search = /#{make_search_str(@keyword, 2)}$/
+      hira = Yahooapi.get_hiragana(@keyword)
+      search = /#{make_search_str(hira, 2)}$/
       # 検索して、複数件の場合ランダムに返却
       refs = Word.any_in(reading_seion: search)
       if refs.count == 0 then
