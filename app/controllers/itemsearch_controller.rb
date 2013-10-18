@@ -30,28 +30,7 @@ class ItemsearchController < ApplicationController
       @hiragana=@vowel.to_hiragana
 =end
       @jsonData
-      @template="相・対・性・うどん
-
-座標変換したらばプロトン
-
-相・対・性・うどん
-
-光の早さで時間がロンドン
-
-量子がもつれて中華丼
-
-かわいいあのこはオートマトン
-
-ところでうな丼
-
-はたしてバリトン
-
-いかにもおいどん
-
-ひるあんどん
-
-
-ご利用いただきマジ感謝（ ゜∀゜ ）"
+      @template=""
     rescue HTTPClient::BadResponseError => e
     rescue HTTPClient::TimeoutError => e
     end
