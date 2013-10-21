@@ -10,7 +10,7 @@
 探しても探してもソレじゃないものしか出てこない。<br>
 超ウッカリー級（スーパー・ウッカリー）脚韻型コンピュータ。<br>
 型式番号RU3P。<br>
-<br>
+入力は日本語でOK。<br>
 <br>
 
 <form action="<%= search_path %>" method="POST">
@@ -33,28 +33,16 @@
     <br>ひらがな:<!%= @hiragana%>-->
 </ul>
 
-<br>
-<%= @template%>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-<!-- 決め打ちサンプル -->
-<!--
-\( ﾟдﾟ)  Hey! Yo!  ( ﾟдﾟ)/ Here we go!<br>
-<br>
-おまえのえんどう<br>
-夏のウインドウ<br>
-<br>
-さがすぜ楽天<br>
-春の祭典<br>
+  ga('create', 'UA-45014648-1', 'sorejanai.herokuapp.com');
+  ga('send', 'pageview');
 
-<br>
-踏むぜライム<br>
-サマータイム<br>
-<br>
-あるいは痛車<br>
-だけど２トン車<br>
-ご利用いただきマジ感謝 (・∀・)<br>
--->
-<br>
+</script>
 
 
 
