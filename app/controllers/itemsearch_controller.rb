@@ -30,7 +30,7 @@ class ItemsearchController < ApplicationController
       @hiragana=@vowel.to_hiragana
 =end
       @jsonData
-      @template=" ライム"
+      @template=" "
     rescue HTTPClient::BadResponseError => e
     rescue HTTPClient::TimeoutError => e
     end
