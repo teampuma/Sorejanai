@@ -8,6 +8,6 @@ deploy:
   provider: heroku
   api_key:
     secure: ddoe8AsLYpmq5D6KSN7BDeAFUQQpKRXvgTzg8ghIjxfPCx3WjBLGlrOpB8UKEed9Un2SFe60EITGQHgvT3SJkjb4ubQ4ajoTJZxdYtjbmqgHp7vrI2J7UaG/vpOcE9j3AQxRTBNr88fkx8ocqQez4J6SC/lmsmDghoIYlE3/Frw=
-  app: boiling-taiga-1044
+  app: sorejanai
   on:
     repo: teampuma/Sorejanai
