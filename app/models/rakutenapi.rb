@@ -14,11 +14,12 @@ class Rakutenapi < ActiveResource::Base
   RAKUTEN_SERVICE_PATH = "/services/api/IchibaItem/Search/20130805"
   self.site = "https://app.rakuten.co.jp/"
 
-  def self.find_by_sentence(sentence)
+  def self.find_goods(sentence)
     # set parameters
     pm = { :applicationId => RAKUTEN_APP_ID, 
            :affiliateId => RAKUTEN_AFFILIATE_ID,
            :keyword => sentence,
+           :imageFlag => 1,         # 画像ありの商品のみ
            :hits => 1,
            :page => 1
           }

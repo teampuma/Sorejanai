@@ -1,10 +1,16 @@
 # coding: utf-8
 class ItemsearchController < ApplicationController
+  @@g_goods = nil
+  
   def index
+    @@g_goods = nil
     render 'itemsearch/index'
   end
 
   def search
+    # 商品の初期化
+    @@g_goods = nil
+
     # 検索文言と結果の文言をDBに登録
     @keyword = params['keyword']
     @word=get_one_word
@@ -20,43 +26,44 @@ class ItemsearchController < ApplicationController
     res = Result.find(params["pid"])
     @keyword = res.search
     @word = res.result
-    httpClient = HTTPClient.new
-
-    @jsonData = nil
     @errorMeg = nil
     @template=" "
-    begin
-      count = 0
-      until count > 0
-        @word=get_one_word
-        data = httpClient.get_content('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20130805', {
-            'applicationId' => '1012622615583035302',
-            'affiliateId'   => '11b23d84.1af290b5.11b23d85.b706ce01',
-            'keyword'       => @word,
-            'hits'          => 1,
-            'page'          => 1
-        })
-        @jsonData = JSON.parse data
-        count = @jsonData['count']
-      end
-    rescue HTTPClient::BadResponseError => e
-    rescue HTTPClient::TimeoutError => e
+    if @@g_goods == nil then
+      @@g_goods = Rakutenapi.find_goods(@word)
     end
+    @goods = @@g_goods
+    # rescue HTTPClient::BadResponseError => e
+    # rescue HTTPClient::TimeoutError => e
     render 'itemsearch/index'
   end
 
   private
     def get_one_word
-      Word.init
+      ret = nil
       # 語尾ふた文字が共通する言葉を取得
       hira = Yahooapi.get_hiragana(@keyword)
       search = /#{make_search_str(hira, 2)}$/
       # 検索して、複数件の場合ランダムに返却
       refs = Word.any_in(reading_seion: search)
       if refs.count == 0 then
-        return "ナシ"        
+        # なかったら梨
+        ret = "ナシ"
+        @@g_goods = Rakutenapi.find_goods(ret)
+        return ret
       end
-      return refs[rand(max=refs.count)].surface
+      
+      # 言葉から商品を検索して、ヒットするまで回す
+      count = 0
+      until count > 0
+        ret = refs[rand(max=refs.count)].surface
+        if count > 5 then
+          # 5回検索してなかったら諦める
+          ret = "ナシ"
+        end
+        @@g_goods = Rakutenapi.find_goods(ret)
+        count = @@g_goods.count
+      end
+      return ret
     end
 
 end
