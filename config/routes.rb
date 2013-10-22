@@ -1,6 +1,7 @@
 Sorejanai::Application.routes.draw do
   root 'itemsearch#index'
   post '/search' => 'itemsearch#search'
+  get '/show' => 'itemsearch#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
