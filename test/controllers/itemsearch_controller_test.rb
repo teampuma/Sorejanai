@@ -2,6 +2,16 @@
 require 'test_helper'
  
 class ItemsearchControllerTest  < ActionController::TestCase
+  def setup
+    # テストデータの作成
+    @test = Result.create(search: "test", result: "test_result")
+  end
+
+  def teardown
+    refs = Result.all
+    refs.delete
+  end
+
   test "access_index" do
     # indexにアクセス
     post(:index)
@@ -15,21 +25,17 @@ class ItemsearchControllerTest  < ActionController::TestCase
     # searchにpost
     post(:search, {:keyword => "うどん"})
     # 302(Redirect)を返却
-    assert_response(302)
-    # テンプレートが妥当か
-    assert_redirected_to :action => 'show', :pid => "うどん"
-    # 入力値がはいっているか
-   # assert_select('input[value="うどん"]')
+    assert_response(:redirect)
   end
   
   test "access_show" do
     # show get
-    get(:show, {:pid => "abcd"})
+    get(:show, {:pid => @test._id})
     # 200を返却
     assert_response(:success)
     # テンプレートが妥当か
     assert_template('itemsearch/index')
     # 入力値がはいっているか
-    assert_select('input[value="abcd"]')
+    assert_select('input[value="test"]')
   end
 end

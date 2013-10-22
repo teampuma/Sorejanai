@@ -5,17 +5,26 @@ class ItemsearchController < ApplicationController
   end
 
   def search
+    # 検索文言と結果の文言をDBに登録
     @keyword = params['keyword']
-    redirect_to :action => "show" , :pid => @keyword
+    @word=get_one_word
+    res = Result.create(search: @keyword, result: @word)
+    
+    # 検索を参照する画面にリダイレクト　IDを渡す
+    redirect_to :action => "show" , :pid => res._id
   end
 
   def show
-    @keyword = params["pid"]
+    # 検索を参照するメソッド
+    # リダイレクトだけでなく、pid指定で結果を返す
+    res = Result.find(params["pid"])
+    @keyword = res.search
+    @word = res.result
     httpClient = HTTPClient.new
 
     @jsonData = nil
     @errorMeg = nil
-    @word = nil
+    @template=" "
     begin
       count = 0
       until count > 0
@@ -23,19 +32,13 @@ class ItemsearchController < ApplicationController
         data = httpClient.get_content('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20130805', {
             'applicationId' => '1012622615583035302',
             'affiliateId'   => '11b23d84.1af290b5.11b23d85.b706ce01',
-            'keyword'       => @word
+            'keyword'       => @word,
+            'hits'          => 1,
+            'page'          => 1
         })
         @jsonData = JSON.parse data
         count = @jsonData['count']
       end
-=begin
-      @roman= @keyword.to_roman
-      @selectVowel=@roman.split("").select {|item| item == "a" || item == "i" || item == "u" || item == "e" || item == "o" || item == "n" }
-      @vowel=@selectVowel.join
-      @hiragana=@vowel.to_hiragana
-=end
-      #@jsonData
-      @template=" "
     rescue HTTPClient::BadResponseError => e
     rescue HTTPClient::TimeoutError => e
     end

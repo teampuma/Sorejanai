@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class YahooapiTest < ActiveSupport::TestCase
-  test "the truth" do
-    assert true
-  end
 
   test "access yahoo" do
     res = Yahooapi.find_by_sentence("漢字")
