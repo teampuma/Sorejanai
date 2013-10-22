@@ -6,6 +6,11 @@ class ItemsearchController < ApplicationController
 
   def search
     @keyword = params['keyword']
+    redirect_to :action => "show" , :pid => @keyword
+  end
+
+  def show
+    @keyword = params["pid"]
     httpClient = HTTPClient.new
 
     @jsonData = nil
@@ -29,12 +34,11 @@ class ItemsearchController < ApplicationController
       @vowel=@selectVowel.join
       @hiragana=@vowel.to_hiragana
 =end
-      @jsonData
+      #@jsonData
       @template=" "
     rescue HTTPClient::BadResponseError => e
     rescue HTTPClient::TimeoutError => e
     end
-
     render 'itemsearch/index'
   end
 
