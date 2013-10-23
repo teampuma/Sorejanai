@@ -21,7 +21,7 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </form>
 
-<% if ! @goods.nil? %>
+<% if ! @goods.nil?  && @goods.count > 0%>
 <ul>
     <% item=@goods.Items[0]%>
     <%= link_to item.Item.itemName, item.Item.affiliateUrl %>
@@ -34,8 +34,4 @@
     <br>母音:<!%= @vowel%>
     <br>ひらがな:<!%= @hiragana%>-->
 </ul>
-
-
-
-
 <% end %>

@@ -13,7 +13,6 @@ class RakutenapiTest < ActiveSupport::TestCase
     res = Rakutenapi.find_goods("うどん")
     # 検索結果は常に1であること
     assert_equal 1, res.Items.size
-    res.Items[0].Item.itemName
   end
 
   test "rakuten api construct" do
