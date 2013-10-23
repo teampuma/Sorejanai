@@ -15,7 +15,7 @@ class WordTest < ActiveSupport::TestCase
 
   test "access mongo" do
     # テストデータの作成
-    Word.create(surface: "test", reading: "てすど", reading_seion: "てすと", count_hira:3)
+    Word.create(surface: "test", reading: "てすど", reading_seion: "てすと", reading_search: "すと", count_hira:3)
 
     # 参照
     refs = Word.all
@@ -27,6 +27,7 @@ class WordTest < ActiveSupport::TestCase
       assert_equal("test", ref.surface)
       assert_equal("てすど", ref.reading)
       assert_equal("てすと", ref.reading_seion)
+      assert_equal("すと", ref.reading_search)
       assert_equal(3, ref.count_hira)
     end
 
@@ -42,6 +43,13 @@ class WordTest < ActiveSupport::TestCase
     
     # 件数のチェック
     assert_equal(29, refs.count)
+
+    # 参照:語尾がどんorとんのものを取得
+    refs = Word.where(reading_search: "とん")
+    
+    # 件数のチェック
+    assert_equal(29, refs.count)
+
   end
 
 end

@@ -31,16 +31,17 @@ class ItemsearchController < ApplicationController
 
   private
     def get_one_word
+      Word.init
+      
       ret = nil
       # 語尾ふた文字が共通する言葉を取得
       hira = Yahooapi.get_hiragana(@keyword)
       search = /#{make_search_str(hira, 2)}$/
       # 検索して、複数件の場合ランダムに返却
-      refs = Word.any_in(reading_seion: search)
+      refs = Word.where(reading_search: search)
       if refs.count == 0 then
         # なかったら梨
         ret = "ナシ"
-        #session[:goods] = Rakutenapi.find_goods(ret)
         return ret
       end
       
@@ -56,7 +57,6 @@ class ItemsearchController < ApplicationController
         goods = Rakutenapi.find_goods(ret)
         count = goods.count
       end
-      # session[:goods] = goods
       return ret
     end
 
