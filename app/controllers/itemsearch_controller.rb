@@ -1,16 +1,11 @@
 # coding: utf-8
 class ItemsearchController < ApplicationController
-  @@g_goods = nil
-  
+
   def index
-    @@g_goods = nil
     render 'itemsearch/index'
   end
 
   def search
-    # 商品の初期化
-    @@g_goods = nil
-
     # 検索文言と結果の文言をDBに登録
     @keyword = params['keyword']
     @word=get_one_word
@@ -28,10 +23,7 @@ class ItemsearchController < ApplicationController
     @word = res.result
     @errorMeg = nil
     @template=" "
-    if @@g_goods == nil then
-      @@g_goods = Rakutenapi.find_goods(@word)
-    end
-    @goods = @@g_goods
+    @goods = Rakutenapi.find_goods(@word)
     # rescue HTTPClient::BadResponseError => e
     # rescue HTTPClient::TimeoutError => e
     render 'itemsearch/index'
@@ -48,21 +40,23 @@ class ItemsearchController < ApplicationController
       if refs.count == 0 then
         # なかったら梨
         ret = "ナシ"
-        @@g_goods = Rakutenapi.find_goods(ret)
+        #session[:goods] = Rakutenapi.find_goods(ret)
         return ret
       end
       
       # 言葉から商品を検索して、ヒットするまで回す
       count = 0
+      goods = nil
       until count > 0
         ret = refs[rand(max=refs.count)].surface
         if count > 5 then
           # 5回検索してなかったら諦める
           ret = "ナシ"
         end
-        @@g_goods = Rakutenapi.find_goods(ret)
-        count = @@g_goods.count
+        goods = Rakutenapi.find_goods(ret)
+        count = goods.count
       end
+      # session[:goods] = goods
       return ret
     end
 
