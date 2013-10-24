@@ -36,7 +36,7 @@ class ItemsearchController < ApplicationController
       ret = nil
       # 語尾ふた文字が共通する言葉を取得
       hira = Yahooapi.get_hiragana(@keyword)
-      search = make_search_str(hira, 2)
+      search = Word.daku_to_sei(hira)[-2,2]
       # 検索して、複数件の場合ランダムに返却
       refs = Word.where(reading_search: search)
       if refs.count == 0 then
