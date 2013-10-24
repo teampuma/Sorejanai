@@ -52,5 +52,16 @@ class WordTest < ActiveSupport::TestCase
 
   end
 
+  test "daku_to_sei" do
+    AIU = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"
+    assert_equal AIU, Word.daku_to_sei(AIU)
+    assert_equal "はひふへほ", Word.daku_to_sei("ぱぴぷぺぽ")
+    assert_equal "かきくけこ", Word.daku_to_sei("がぎぐげご")
+    assert_equal "さしすせそ", Word.daku_to_sei("ざじずぜぞ")
+    assert_equal "たちつてと", Word.daku_to_sei("だぢづでど")
+    assert_equal "はひふへほ", Word.daku_to_sei("ばびぶべぼ")
+    assert_equal "ゃゅょぁぃぅぇぉ", Word.daku_to_sei("ゃゅょぁぃぅぇぉ")
+  end
+
 end
 

@@ -49,5 +49,18 @@ class Word
       Word.create(surface: "半ドン", reading: "はんどん", reading_seion: "はんとん", reading_search: "とん", count_hira:4)
     end
   end
-  
+
+  def self.daku_to_sei(s)
+    # 濁点、半濁点を考慮するため
+    # ひらがなの濁音を清音に変換する
+    daku = "がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ"
+    sei = "かきくけこさしすせそたちつてとはひふへほはひふへほ"
+
+    ret = s
+    for i in 0...daku.size
+      ret = ret.gsub(daku[i], sei[i])
+    end
+    return ret
+    
+  end
 end
