@@ -2,6 +2,7 @@
 class ItemsearchController < ApplicationController
 
   def index
+    @counter = Result.all.count
     render 'itemsearch/index'
   end
 
@@ -24,6 +25,7 @@ class ItemsearchController < ApplicationController
     @errorMeg = nil
     @template=" "
     @goods = Rakutenapi.find_goods(@word)
+    @counter = Result.all.count
     # rescue HTTPClient::BadResponseError => e
     # rescue HTTPClient::TimeoutError => e
     render 'itemsearch/index'

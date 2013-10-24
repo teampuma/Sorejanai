@@ -7,10 +7,9 @@
 <br>
 <%= image_tag("RMMimage.png", :size => "150x150") %><br>
 あなたの発想を支援する、脚韻型サーチシステム（ベータ版）。<br>
-リアルタイムに脚韻で検索をかけるコンピュータです。<br>
+いままでなかった「それじゃない」感あふれる偶然の検索体験をお楽しみください。<br>
 <br>
-いままで無かった「ソレじゃない」感あふれる偶然の検索体験をお楽しみください。<br>
-<br>
+<%= @counter %>
 
 <form action="<%= search_path %>" method="POST">
     <input type="input" name="keyword" value="<%= @keyword %>" required>
