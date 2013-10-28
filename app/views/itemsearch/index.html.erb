@@ -12,6 +12,12 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </form>
 
+    <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<p>Enter a message:</p>
+<%= form_tag({:action => "update"}, {:method => "post"}) do %>
+  <%= text_field_tag(:message) %>
+  <%= submit_tag("Submit") %>
+<% end %>
 <% if ! @goods.nil?  && @goods.count > 0%>
 <ul>
     <% item=@goods.Items[0]%>

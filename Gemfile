@@ -65,3 +65,7 @@ gem 'activeresource'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#gem for twitter
+gem 'twitter'
+gem 'omniauth-twitter'

@@ -1,7 +1,7 @@
 # coding: utf-8
 class ItemsearchController < ApplicationController
   ## tweet update
-    def update
+  def update
       client = Twitter::Client.new(
         :oauth_token => session[:oauth_token],
         :oauth_token_secret => session[:oauth_token_secret]
