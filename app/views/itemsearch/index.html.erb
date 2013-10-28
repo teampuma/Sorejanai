@@ -12,12 +12,8 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </form>
 
-    <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-<p>Enter a message:</p>
-<%= form_tag({:action => "update"}, {:method => "post"}) do %>
-  <%= text_field_tag(:message) %>
-  <%= submit_tag("Submit") %>
-<% end %>
+
+
 <% if ! @goods.nil?  && @goods.count > 0%>
 <ul>
     <% item=@goods.Items[0]%>
@@ -25,10 +21,12 @@
     <br><% item.Item.mediumImageUrls.each do |image| %>
     <img src=<%= image.imageUrl%> alt="画像がありません" width=100 height=100>
     <% end%>
-    <br>もしかして:<%= @word %>
+    <br>もしかして:<%= @word %><br>
     <!--<!%= @keyword%>
     <br>ローマ字:<!%= @roman%>
     <br>母音:<!%= @vowel%>
     <br>ひらがな:<!%= @hiragana%>-->
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sorejanai.herokuapp.com" data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </ul>
 <% end %>
