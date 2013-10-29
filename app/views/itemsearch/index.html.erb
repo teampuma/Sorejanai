@@ -4,7 +4,7 @@
 <%= image_tag("RMMimgRight.png", :size => "150x150") %><br>
 あなたの発想を支援する、脚韻型サーチシステム（ベータ版）。<br>
 いままでなかった「それじゃない」感あふれる偶然の検索体験をお楽しみください。<br>
-<%= @counter %>
+<br>
 
 <form action="<%= search_path %>" method="POST">
     <input type="input" name="keyword" value="<%= @keyword %>" required>
@@ -21,7 +21,14 @@
     <br><% item.Item.mediumImageUrls.each do |image| %>
     <img src=<%= image.imageUrl%> alt="画像がありません" width=100 height=100>
     <% end%>
-    <br>もしかして:<%= @word %><br>
+    <br><br>
+    <button class="btn disabled">もしかして:　<%= @word %></button><br>
+    <br><button class="btn btn-primary btn-large">それじゃない</button>
+    <button class="btn btn-primary btn-large">わるくない</button>
+    <button class="btn btn-primary btn-large">座布団一枚</button>  
+    <br>
+    <br><br>
+
     <!--<!%= @keyword%>
     <br>ローマ字:<!%= @roman%>
     <br>母音:<!%= @vowel%>

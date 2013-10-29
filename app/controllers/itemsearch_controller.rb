@@ -11,7 +11,6 @@ class ItemsearchController < ApplicationController
   end
   
   def index
-    @counter = Result.all.count
     render 'itemsearch/index'
   end
 
