@@ -13,7 +13,7 @@
 </form>
 
 
-
+<% twitter_url= "http://sorejanai.herokuapp.com/" %>
 <% if ! @goods.nil?  && @goods.count > 0%>
 <ul>
     <% item=@goods.Items[0]%>
@@ -28,6 +28,7 @@
     <button class="btn btn-success">山田君、座ぶとん一枚</button>
     <br>
     <br><br>
+    <% twitter_url="http://sorejanai.herokuapp.com/show?pid=" + params["pid"] %>
 </ul>
 <% end %>
 
@@ -51,7 +52,7 @@
 	}
 	(document, 'script', 'twitter-wjs');
 	</script>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= "http://sorejanai.herokuapp.com/show?pid=" + params["pid"] %>  data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= twitter_url %>  data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
 
 
 <script type="text/javascript">
