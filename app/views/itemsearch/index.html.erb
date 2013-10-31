@@ -51,7 +51,8 @@
 	}
 	(document, 'script', 'twitter-wjs');
 	</script>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sorejanai.herokuapp.com" data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= "http://sorejanai.herokuapp.com/show?pid=" + params["pid"] %>  data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
+
 
 <script type="text/javascript">
   window.___gcfg = {lang: 'ja'};
