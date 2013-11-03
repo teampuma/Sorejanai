@@ -4,6 +4,8 @@ rvm:
 env:
   global:
     - secure: "Wh8Rft8ZpZaQFZPtny0IZKEVtGIYx7rtLjHKgVdJ9kfaW2/z6J2byfzWm323DnIgZexUsL26kfRE94vRp5s/NqVVMQKefXfpORr7r/XY4bAD5Frx/NGP4Q5FZ4wUUGO8JP1Rs/cD+z1YTVkwR35pzdSIME5bJr0XhhetqtjK8WQ="
+    - secure: "CgXSXE0hcz/1dw5bp0IBfB99Se/vKy1X3lLcDRLdhoPM0gu2BuXMUVUfQItPideLBlGy/JdGcwF/1njd2WjNHYf/sOQfo/SzyATu5EJqedpM8PDH3dRXRiHKklaW69FCKLiN8G6+A8DoFiYlQqZmehk7RI6qCDEezscWEkyTOEU="
+    - secure: "XY1R1wJXkQ8OGDEnsAhHerpYj+pCcoWfPQtLqRMgpEWjNaATh9tSvgBjDlwVv16Gwh+UWcMu4J753vFjFJb4myios2bDSk6WUmlpIeOIPo4NdlcDypemtv47STVGuxBv7SrSDXoZ5HVYKbHI/hoIh6JVlx9EnDDIQwGQtET8PkE="
 deploy:
   provider: heroku
   api_key:

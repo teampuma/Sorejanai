@@ -11,7 +11,7 @@ require 'active_resource'
 
 class Yahooapi < ActiveResource::Base
   # Yahoo Definition
-  YAHOO_APP_ID = "dj0zaiZpPVNGOEdKYXVXZlVhbiZzPWNvbnN1bWVyc2VjcmV0Jng9ZGY-"
+  YAHOO_APP_ID = ENV['YAHOO_APP_ID']
   self.site = "http://jlp.yahooapis.jp/"
 
   class Format

@@ -9,7 +9,7 @@ require 'active_resource'
 
 class Rakutenapi < ActiveResource::Base
   # Rakuten Definition
-  RAKUTEN_APP_ID = "1012622615583035302"
+  RAKUTEN_APP_ID = ENV['RAKUTEN_APP_ID']
   RAKUTEN_AFFILIATE_ID = "11b23d84.1af290b5.11b23d85.b706ce01"
   RAKUTEN_SERVICE_PATH = "/services/api/IchibaItem/Search/20130805"
   self.site = "https://app.rakuten.co.jp/"
