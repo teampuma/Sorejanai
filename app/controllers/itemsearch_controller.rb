@@ -34,7 +34,7 @@ class ItemsearchController < ApplicationController
     @template=" "
     @goods = Rakutenapi.find_goods(@word)
     @counter = Result.all.count
-    @tw_text = @keyword + "を検索したら" + @word + "が出てきた。。。( \ﾟд\ﾟ)"
+    @tw_text = @keyword + "を検索したら" + @word + "が出てきた。。。"
     # rescue HTTPClient::BadResponseError => e
     # rescue HTTPClient::TimeoutError => e
     render 'itemsearch/index'
