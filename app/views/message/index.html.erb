@@ -1,0 +1,12 @@
+<br>
+<br>
+<br>
+<%= image_tag("RMMimgRight.png", :size => "150x150") %><%= @thx %><br>
+<br>
+<h2>ご意見ご要望お待ちしております</h2>
+<form action="<%= message_post_path %>" method="POST">
+    <input type="input" name="message" value="" required>
+    <input type="submit" value="投稿">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
+
