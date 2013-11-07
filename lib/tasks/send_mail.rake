@@ -17,8 +17,8 @@ namespace :send_mail do
     msgs.each do |msg|
       tmp << msg.postdt.strftime("%Y/%m/%d %H:%M:%S") + " " + msg.message 
       # 送信したメッセージに送信フラグを立てる
-      #msg.sendflg = true
-      #msg.save
+      msg.sendflg = true
+      msg.save
     end
     body = tmp.join("\n")
     return body
