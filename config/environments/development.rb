@@ -24,4 +24,15 @@ Sorejanai::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.action_mailer.smtp_settings =  {
+    :port           => 0,
+    :address        => '<address>',
+    :user_name      => '<user name>',
+    :password       => '<password>',
+    :domain         => 'sorejanai.herokuapp.com',
+    :authentication => :plain,
+  }
+  config.action_mailer.delivery_method = :smtp
+
 end

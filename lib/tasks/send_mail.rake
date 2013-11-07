@@ -52,8 +52,8 @@ namespace :send_mail do
     address = get_address
 
     #メール送信
-    
-    
+    UserMessage.send_mail(address, body).deliver!
+
     puts "End send mail."
   end
   
