@@ -10,4 +10,7 @@ class Result
   include Mongoid::Document
   field :search, type: String
   field :result, type: String
+  field :sorejanai, type: Integer, default: 0
+  field :warukunai, type: Integer, default: 0
+  
 end

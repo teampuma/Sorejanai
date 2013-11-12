@@ -40,6 +40,16 @@ class ItemsearchController < ApplicationController
     render 'itemsearch/index'
   end
 
+  def inc_sorejanai
+    res = Result.find(params["pid"])
+    res.inc(:sorejanai => 1)
+  end
+
+  def inc_warukunai
+    res = Result.find(params["pid"])
+    res.inc(:warukunai => 1)
+  end
+
   private
     def get_one_word
       Word.init
