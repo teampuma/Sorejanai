@@ -28,6 +28,7 @@ class ItemsearchController < ApplicationController
     # 検索を参照するメソッド
     # リダイレクトだけでなく、pid指定で結果を返す
     res = Result.find(params["pid"])
+    @id = res.id
     @keyword = res.search
     @word = res.result
     @errorMeg = nil
@@ -40,14 +41,14 @@ class ItemsearchController < ApplicationController
     render 'itemsearch/index'
   end
 
-  def inc_sorejanai
-    res = Result.find(params["pid"])
-    res.inc(:sorejanai => 1)
-  end
-
-  def inc_warukunai
-    res = Result.find(params["pid"])
-    res.inc(:warukunai => 1)
+  def inc
+    # 点数をつけるメソッド。
+    res = Result.find(params[:id])
+    if params[:sore] then
+      res.inc(:sorejanai => 1)
+    else
+      res.inc(:warukunai => 1)
+    end
   end
 
   private

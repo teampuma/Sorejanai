@@ -7,6 +7,7 @@ Sorejanai::Application.routes.draw do
   get "/signout" => "sessions#destroy"
   get '/message' => 'message#index'
   post '/message/post' => 'message#post'
+  post '/inc' => 'itemsearch#inc'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
