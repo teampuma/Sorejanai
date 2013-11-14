@@ -13,4 +13,10 @@ class Result
   field :sorejanai, type: Integer, default: 0
   field :warukunai, type: Integer, default: 0
   
+  def self.searchCount
+    self.collection.aggregate(
+          { '$group' => {'_id'   => '$search', 'count' => { '$sum' => 1}}},
+          { '$sort' =>  { 'count' => -1}},
+    )
+  end
 end
