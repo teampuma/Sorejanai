@@ -12,7 +12,7 @@ class MessageController < ApplicationController
         message: params["message"],
         postdt: DateTime.now,
         sendflg: false)
-    @thx = "ご意見ありがとちゃん！"
+    @thx = "おつかれちゃん！ご意見ありがとちゃん！"
     render 'message/index'
   end
 end
