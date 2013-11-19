@@ -19,4 +19,12 @@ class YahooapiTest < ActiveSupport::TestCase
     res = Yahooapi.get_hiragana("庭には二羽ニワトリがいる")
     assert_equal("にわ", res)
   end
+  
+  test "check Text" do
+    res = Yahooapi.get_text("文章でコミュニケーションを取る")
+    assert_equal(5, res.count)
+    assert_equal("文章", res[0]["surface"])
+    assert_equal("ぶんしょう", res[0]["reading"])
+    assert_equal(true, res[0]["pos"])
+  end
 end

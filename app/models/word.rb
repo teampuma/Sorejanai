@@ -61,6 +61,17 @@ class Word
       ret = ret.gsub(daku[i], sei[i])
     end
     return ret
-    
+  end
+  
+  def self.get_word(s)
+    # 語尾ふた文字が共通する言葉を取得
+    search = daku_to_sei(s)[-2,2]
+    # 検索結果をそのまま返却
+    refs = where(reading_search: search)
+    return refs
+  end
+  
+  def self.get_text(text)
+    # YahooAPIで判定した配列から文章を生成・返却する
   end
 end
