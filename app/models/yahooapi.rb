@@ -53,9 +53,13 @@ class Yahooapi < ActiveResource::Base
     ret = []
     res = find_by_sentence(s)
     res.ma_result.word_list.word.each do |w|
-      tmp = {"surface" => w.surface, 
-        "reading" => w.reading, 
-        "pos" => w.pos == "名詞" ? true : false}
+      tmp = Translation.new
+      tmp.surface = w.surface 
+      tmp.reading = w.reading 
+      tmp.pos = w.pos == "名詞" ? true : false
+      tmp.chg_surface = "" 
+      tmp.chg_reading = ""
+      tmp.changed = false
       ret.append(tmp)
     end
     return ret

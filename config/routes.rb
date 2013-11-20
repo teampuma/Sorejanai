@@ -4,10 +4,12 @@ Sorejanai::Application.routes.draw do
   get '/show' => 'itemsearch#show'
   get "/auth/:provider/callback" => "sessions#create"
   post "itemsearch/update"  
+  post '/inc' => 'itemsearch#inc'
   get "/signout" => "sessions#destroy"
   get '/message' => 'message#index'
   post '/message/post' => 'message#post'
-  post '/inc' => 'itemsearch#inc'
+  get '/translate' => 'translate#index'
+  get '/translate/show' => 'translate#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

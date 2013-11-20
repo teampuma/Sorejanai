@@ -62,6 +62,20 @@ class WordTest < ActiveSupport::TestCase
     assert_equal "はひふへほ", Word.daku_to_sei("ばびぶべぼ")
     assert_equal "ゃゅょぁぃぅぇぉ", Word.daku_to_sei("ゃゅょぁぃぅぇぉ")
   end
+  
+  test "get text print" do
+    Word.init
+    
+    w1 = Translation.new("surface" => "饂飩", "reading" => "うどん", "pos" => true)
+    w2 = Translation.new("surface" => "と", "reading" => "と", "pos" => false)
+    w3 = Translation.new("surface" => "牛丼", "reading" => "ぎゅうどん", "pos" => true)
+    tmps = [w1,w2,w3]
+    ret = Word.get_text(tmps)
+    assert true, ret[0].changed
+    assert true, ret[2].changed
+    assert "と", ret[1].reading
+    
+  end
 
 end
 

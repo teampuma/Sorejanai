@@ -73,5 +73,19 @@ class Word
   
   def self.get_text(text)
     # YahooAPIで判定した配列から文章を生成・返却する
+    ret = []
+    text.each do |t|
+      if t.pos
+        refs = get_word(t.reading)
+        if refs.count > 0
+          ref = refs[rand(max=refs.count)]
+          t.chg_surface = ref.surface
+          t.chg_reading = ref.reading
+          t.changed = true
+        end
+      end
+      ret << t
+    end
+    return ret
   end
 end

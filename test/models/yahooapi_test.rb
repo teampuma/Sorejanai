@@ -23,8 +23,8 @@ class YahooapiTest < ActiveSupport::TestCase
   test "check Text" do
     res = Yahooapi.get_text("文章でコミュニケーションを取る")
     assert_equal(5, res.count)
-    assert_equal("文章", res[0]["surface"])
-    assert_equal("ぶんしょう", res[0]["reading"])
-    assert_equal(true, res[0]["pos"])
+    assert_equal("文章", res[0].surface)
+    assert_equal("ぶんしょう", res[0].reading)
+    assert_equal(true, res[0].pos)
   end
 end
