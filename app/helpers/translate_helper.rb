@@ -17,4 +17,5 @@ module TranslateHelper
     
     return raw(ret)
   end
+  
 end

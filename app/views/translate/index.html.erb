@@ -1,12 +1,16 @@
 <br>
 <br>
 <br>
-<%= image_tag("RMMimage.png", :size => "150x150") %><%= show_translation @result %><br>
+<%= image_tag("RMMimage.png", :size => "150x150") %><br>
 <br>
 <p>それじゃない翻訳</p>
 <form action="<%= translate_show_path %>" method="GET">
-    <textarea name="translation" required></textarea>
-    <input type="submit" value="翻訳">
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	<div>
+    	<textarea name="translation" required><%= @cause %></textarea>
+		<%= show_translation @result %>
+	</div>
+	<div>
+    	<input type="submit" value="翻訳">
+	</div>
 </form>
 
