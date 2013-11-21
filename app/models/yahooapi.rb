@@ -52,15 +52,27 @@ class Yahooapi < ActiveResource::Base
     # 文章＋ひらがな＋名詞かどうか返却
     ret = []
     res = find_by_sentence(s)
-    res.ma_result.word_list.word.each do |w|
+    if res.ma_result.total_count.to_i == 1
+      w1 = res.ma_result.word_list.word
       tmp = Translation.new
-      tmp.surface = w.surface 
-      tmp.reading = w.reading 
-      tmp.pos = w.pos == "名詞" ? true : false
+      tmp.surface = w1.surface 
+      tmp.reading = w1.reading 
+      tmp.pos = w1.pos == "名詞" ? true : false
       tmp.chg_surface = "" 
       tmp.chg_reading = ""
       tmp.changed = false
       ret.append(tmp)
+    else
+      res.ma_result.word_list.word.each do |w|
+        tmp = Translation.new
+        tmp.surface = w.surface 
+        tmp.reading = w.reading 
+        tmp.pos = w.pos == "名詞" ? true : false
+        tmp.chg_surface = "" 
+        tmp.chg_reading = ""
+        tmp.changed = false
+        ret.append(tmp)
+      end
     end
     return ret
   end

@@ -9,6 +9,7 @@ class TranslateController < ApplicationController
     p = params["translation"]
     text = Yahooapi.get_text(p)
     @result = Word.get_text(text)
+    @cause = p
     render 'translate/index'
   end
 
