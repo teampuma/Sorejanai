@@ -4,12 +4,12 @@
 <%= image_tag("RMMimage.png", :size => "150x150") %><br>
 <br>
 
-あなたの混乱を助長する、脚韻型変換 　ソレじゃない翻訳。<br>
+あなたの理解を阻害する、脚韻型翻訳 　ソレじゃないトランスレート。<br>
 <br>
-入力された文章の、その全ての名詞を検索し、脚韻を踏んで違う言葉を返します。<br>
-ご想像のとおり、長い文章だと全く意味不明のイミフー体験を味わうことができます。<br>
+入力された文章の全ての名詞を検索し、脚韻を踏んで違う言葉を返します。<br>
+長い文章を入力すると全く意味不明のイミフー体験を味わうことができます。<br>
 いやロボットも一生懸命なのです。でも回せば回すほどイミフー。<br>
-たぶん俳句くらいの長さが一番おもしろい感じっぽいです。<br>
+どうやら俳句くらいの長さだとボチボチ面白いようです。。。<br>
 <br>
 
 
@@ -17,7 +17,7 @@
 </p>
 <form action="<%= translate_show_path %>" method="GET">
 	<div>
-    	<textarea name="translation" required><%= @cause %></textarea>
+    	<textarea name="translation" cols="40" rows="5"　required><%= @cause %>いやロボットも一生懸命なのです。でも回せば回すほどイミフー。</textarea>
 		<%= show_translation @result %>
 	</div>
 	<div>
