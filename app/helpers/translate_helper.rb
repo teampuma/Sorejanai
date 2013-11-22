@@ -9,7 +9,7 @@ module TranslateHelper
     ret = ""
     res.each do |r|
       if r.changed
-        ret = ret + content_tag(:b, :readind, r.chg_surface)
+        ret = ret + content_tag(:b, r.chg_surface)
       else
         ret = ret + r.surface
       end
