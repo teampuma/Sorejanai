@@ -13,7 +13,10 @@ class Word
   field :reading_seion, type: String
   field :reading_search, type: String
   field :count_hira, type: Integer
-  
+  field :loc, type: Array
+
+  index({ loc: "2d" }, { min: -200, max: 200 })  
+
   def self.init
     # 初期化
     # ダミーとしてデータを格納する
@@ -46,7 +49,7 @@ class Word
       Word.create(surface: "つっけんどん", reading: "つっけんどん", reading_seion: "つっけんとん", reading_search: "とん", count_hira:6)
       Word.create(surface: "おさんどん", reading: "おさんどん", reading_seion: "おさんとん", reading_search: "とん", count_hira:5)
       Word.create(surface: "天丼", reading: "てんどん", reading_seion: "てんとん", reading_search: "とん", count_hira:4)
-      Word.create(surface: "半ドン", reading: "はんどん", reading_seion: "はんとん", reading_search: "とん", count_hira:4)
+      Word.create(surface: "半ドン", reading: "はんどん", reading_seion: "はんとん", reading_search: "とん", count_hira:4, loc:[1,2])
     end
   end
 
@@ -70,13 +73,22 @@ class Word
     refs = where(reading_search: search)
     return refs
   end
+
+  def self.get_word_noloc(s)
+    # 語尾ふた文字が共通する言葉を取得
+    search = daku_to_sei(s)[-2,2]
+    # 地図情報なしのデータとする（翻訳用）
+    # 検索結果をそのまま返却
+    refs = where(reading_search: search, :loc.exists => false)
+    return refs
+  end
   
   def self.get_text(text)
     # YahooAPIで判定した配列から文章を生成・返却する
     ret = []
     text.each do |t|
       if t.pos
-        refs = get_word(t.reading)
+        refs = get_word_noloc(t.reading)
         if refs.count > 0
           ref = refs[rand(max=refs.count)]
           t.chg_surface = ref.surface

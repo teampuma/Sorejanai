@@ -77,5 +77,13 @@ class WordTest < ActiveSupport::TestCase
     
   end
 
+  test "get no loc data test" do
+    Word.init
+    # refs = Word.all.near(:loc => [100,200])
+    # refs = Word.where(reading_search: "とん").near(:loc => [100,200])
+    refs = Word.get_word_noloc("どん")
+    assert_equal(28, refs.count)
+    # p Word.all.near(:loc => [100,200])
+  end
 end
 
