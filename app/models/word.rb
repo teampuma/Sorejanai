@@ -82,6 +82,15 @@ class Word
     refs = where(reading_search: search, :loc.exists => false)
     return refs
   end
+
+  def self.get_word_withloc(s, lat, lon)
+    # 語尾ふた文字が共通する言葉を取得
+    search = daku_to_sei(s)[-2,2]
+    # 地図情報ありのデータとする（地図用）
+    # 検索結果をそのまま返却
+    refs = where(reading_search: search, :loc.exists => true, :loc => {"$near" => [lat,lon]})
+    return refs
+  end
   
   def self.get_text(text)
     # YahooAPIで判定した配列から文章を生成・返却する

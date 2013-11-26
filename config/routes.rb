@@ -1,4 +1,8 @@
 Sorejanai::Application.routes.draw do
+  resources :maps
+
+  resources :users
+
   root 'itemsearch#index'
   post '/search' => 'itemsearch#search'
   get '/show' => 'itemsearch#show'
@@ -10,6 +14,7 @@ Sorejanai::Application.routes.draw do
   post '/message/post' => 'message#post'
   get '/translate' => 'translate#index'
   get '/translate/show' => 'translate#show'
+  get '/maps' => 'maps#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -57,6 +57,8 @@ GEM
     execjs (2.0.1)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    geocoder (1.1.8)
+    gmaps4rails (2.1.0)
     hashie (2.0.5)
     hike (1.2.3)
     httpclient (2.3.4.1)
@@ -168,6 +170,8 @@ DEPENDENCIES
   bson_ext
   coffee-rails (= 4.0.0)
   execjs
+  geocoder
+  gmaps4rails
   httpclient
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
