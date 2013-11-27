@@ -85,5 +85,11 @@ class WordTest < ActiveSupport::TestCase
     assert_equal(28, refs.count)
     # p Word.all.near(:loc => [100,200])
   end
+  
+  test "get loc data test" do
+    refs = Word.getloc("東京")
+    p refs.count
+  end
+
 end
 
