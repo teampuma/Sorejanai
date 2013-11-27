@@ -42,13 +42,13 @@ class WordTest < ActiveSupport::TestCase
     refs = Word.any_in(reading_seion: /とん$/)
     
     # 件数のチェック
-    assert_equal(29, refs.count)
+    assert_equal(30, refs.count)
 
     # 参照:語尾がどんorとんのものを取得
     refs = Word.where(reading_search: "とん")
     
     # 件数のチェック
-    assert_equal(29, refs.count)
+    assert_equal(30, refs.count)
 
   end
 
@@ -88,7 +88,6 @@ class WordTest < ActiveSupport::TestCase
   
   test "get loc data test" do
     refs = Word.getloc("東京")
-    p refs.count
   end
 
 end
