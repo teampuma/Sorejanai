@@ -29,7 +29,7 @@ class MapsController < ApplicationController
         # next if [word.loc[1], word.loc[0]] == [0, 0]
         marker.lat word.loc[1]
         marker.lng word.loc[0]
-        marker.infowindow '#{word.surface} (#{word.reading})' 
+        marker.infowindow word.surface 
       end
     end
 end
