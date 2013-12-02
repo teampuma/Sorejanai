@@ -2,7 +2,7 @@
 class TranslateController < ApplicationController
 
   def index
-    @cause = "いやロボットも一生懸命なのです。でも回せば回すほどイミフー。"
+    @cause = "夏草や　岩に染み入る　蝉の声"
     render 'translate/index'
   end
   
