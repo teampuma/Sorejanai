@@ -1,43 +1,36 @@
-<br>
-<br>
-<br>
-<%= image_tag("RMMimage.png", :size => "150x150") %><br>
-<br>
-
-あなたの理解を阻害する、脚韻型トランスレーション 　それじゃない翻訳。<br>
-<br>
-入力された文章の全ての名詞を検索し、脚韻を踏んで違う言葉を返します。<br>
-長い文章を入れると、全く意味不明の結果が帰ってきますが、<br>
-俳句や川柳くらいの長さの文章ですと、ソコソコ行けるときもございます。<br>
-今回は、あらかじめ松尾芭蕉の名句をご準備しておきました。<br>
-どうぞお試しください！
-<br>
-<br>
-
-
-
-</p>
-<form action="<%= translate_show_path %>" method="GET">
-	<div>
-    	<textarea name="translation" cols="40" rows="5"　required><%= @cause %></textarea>
-		<%= show_translation @result %>
-		<script>!function(d,s,id){
+<script>
+//twitter
+!function(d,s,id){
   var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
   if(!d.getElementById(id)){
     js=d.createElement(s);
     js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
     fjs.parentNode.insertBefore(js,fjs);
     }
-  }
-  (document, 'script', 'twitter-wjs');
-  </script>
-		<a href="https://twitter.com/share" class="twitter-share-button" data-text=<%= "http://sorejanai.herokuapp.com/translate/show?translation=" + @cause %> data-lang="ja" data-hashtags="Sorejanai">ツイー
-ト</a>
+  }(document, 'script', 'twitter-wjs');
+</script>
 
+<br><br><br>
+<%= image_tag("RMMimage.png", :size => "150x150") %>
+<br><br>
 
-	</div>
-	<div>
-    	<input type="submit" value="翻訳">
-	</div>
+あなたの理解を阻害する、脚韻型トランスレーション 　それじゃない翻訳。
+<br><br>
+入力された文章の全ての名詞を検索し、脚韻を踏んで違う言葉を返します。<br>
+長い文章を入れると、全く意味不明の結果が帰ってきますが、<br>
+俳句や川柳くらいの長さの文章ですと、ソコソコ行けるときもございます。<br>
+今回は、あらかじめ松尾芭蕉の名句をご準備しておきました。<br>
+どうぞお試しください！
+<br><br>
+
+<form action="<%= translate_show_path %>" method="GET">
+<div>
+	<textarea name="translation" cols="40" rows="5"　required><%= @cause %></textarea>
+	<%= show_translation @result %>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-text=<%= "http://sorejanai.herokuapp.com/translate/show?translation=" + @cause %> data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
+</div>
+<div>
+	<input type="submit" value="翻訳">
+</div>
 </form>
 

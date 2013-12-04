@@ -1,56 +1,63 @@
+<script>
+//facebook 
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//twitter
+!function(d,s,id){
+  var js,fjs=d.getElementsByTagName(s)[0],
+  p=/^http:/.test(d.location)?'http':'https';
+  if(!d.getElementById(id)){
+    js=d.createElement(s);
+    js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+    fjs.parentNode.insertBefore(js,fjs);
+  }
+}(document, 'script', 'twitter-wjs');
+
+//google plus
+window.___gcfg = {lang: 'ja'};
+(function() {
+	var po = document.createElement('script'); po.type = 'text/javascript';
+	po.async = true;
+	po.src = 'https://apis.google.com/js/plusone.js';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+
 <div class="container-fluid">
 <div class="row-fluid">
 <div class="span6">
 <br>
 <br>
 <br>
+
+<!-- social button -->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <div class="fb-like" data-href="http://sorejanai.herokuapp.com" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false"></div>
-
-<script>!function(d,s,id){
-  var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-  if(!d.getElementById(id)){
-    js=d.createElement(s);
-    js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
-    fjs.parentNode.insertBefore(js,fjs);
-    }
-  }
-  (document, 'script', 'twitter-wjs');
-  </script>
 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sorejanai.herokuapp.com/"  data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
-
-
-<script type="text/javascript">
-  window.___gcfg = {lang: 'ja'};
-
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
 <div class="g-plusone" data-size="medium"></div>
-
 <a href="http://b.hatena.ne.jp/entry/http://sorejanai.herokuapp.com" class="hatena-bookmark-button" data-hatena-bookmark-title="Sorejanai Search" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
   <img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
 </a>
-<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async">
-</script>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
 <br><br>
 <%= image_tag("sorejanai.gif", :size => "200x200") %>
 <%= image_tag("RMMimgRight.png", :size => "150x150") %>
 <br>
 
-あなたの発想を支援する、脚韻型検索 　それじゃないサーチ。<br>
+あなたの発想を支援する、脚韻型検索 　それじゃないサーチ。
 <br>
-おおよそ20回検索すると、1個か2個、面白いものが出ることがあります。いや出します。頑張ります。CPUフル回転でお届けします！どうぞお試しください！<br>
+<br>
+おおよそ20回検索すると、1個か2個、面白いものが出ることがあります。いや出します。頑張ります。CPUフル回転でお届けします！どうぞお試しください！
+<br>
 <br>
 
 <form action="<%= search_path %>" method="POST">
@@ -64,51 +71,44 @@
 <ul>
     <% item=@goods.Items[0]%>
     <%= link_to item.Item.itemName, item.Item.affiliateUrl %>
-    <br><% item.Item.mediumImageUrls.each do |image| %>
-    <img src=<%= image.imageUrl%> alt="画像がありません" width=100 height=100>
+    <br>
+    <% item.Item.mediumImageUrls.each do |image| %>
+    	<img src=<%= image.imageUrl%> alt="画像がありません" width=100 height=100>
     <% end%>
     <br><br>
     <button class="btn disabled btn-large">もしかして：<%= @word %></button>
     <% twitter_url="http://sorejanai.herokuapp.com/show?pid=" + params["pid"] %>
     <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= twitter_url %>  data-text=<%= @tw_text %> data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
-	<br>
-    <br>
+    <br><br>
 	<%= form_tag "inc", remote: true do %>
 	  <%= hidden_field_tag 'id', @id %>
 	  <%= submit_tag "それじゃない", :name => 'sore', class: 'btn btn-primary' %>
 	  <%= submit_tag "わるくない", :name => 'waru', class: 'btn btn-info' %>
 	<% end %>
     <button class="btn btn-success">座ぶとん一枚</button>
-    <br>
-    <br><br>
+    <br><br><br>
 </ul>
 <% end %>
 
 
 </div>
+
 <!--ここから右側のアコーディオンとツイート部分  -->
 <div class="span3 offset2">
-<br>
-<br>
-<br>
-
-<div class="accordion" id="accordion2" style='width:300px;'>
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Tweet</a>
-                </div>
-                <div id="collapseOne" class="accordion-body collapse in">
-                    <div class="accordion-inner">
-                        <a class="twitter-timeline" href="https://twitter.com/search?q=%23Sorejanai" data-widget-id="399862996869971968" width="300" height="300">#Sorejanai に関するツイート</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                    </div>
-                </div>
-            </div>
+	<br><br><br>
+	<div class="accordion" id="accordion2" style='width:300px;'>
+		<div class="accordion-group">
+			<div class="accordion-heading">
+			  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Tweet</a>
+			</div>
+			<div id="collapseOne" class="accordion-body collapse in">
+				<div class="accordion-inner">
+					<a class="twitter-timeline" href="https://twitter.com/search?q=%23Sorejanai" data-widget-id="399862996869971968" width="300" height="300">#Sorejanai に関するツイート</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-</div>
-<!-- アコーディオンのためのjquery読み込み -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 </div>
 </div>
