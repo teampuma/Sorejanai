@@ -29,6 +29,15 @@ window.___gcfg = {lang: 'ja'};
 	s.parentNode.insertBefore(po, s);
 })();
 
+$(function() {
+  $('#comp').autocomplete({
+    source: ['うどん','ぎゅうどん','おいどん'],
+    autoFocus: true,
+    delay: 2,
+    minLength: 1
+  });
+});
+
 </script>
 
 <div class="container-fluid">
@@ -61,7 +70,7 @@ window.___gcfg = {lang: 'ja'};
 <br>
 
 <form action="<%= search_path %>" method="POST">
-    <input type="input" name="keyword" value="<%= @keyword %>" required>
+    <input type="input" id="comp" name="keyword" value="<%= @keyword %>" required>
     <input type="submit" value="Search">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </form>
