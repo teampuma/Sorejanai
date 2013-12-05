@@ -12,6 +12,7 @@ Sorejanai::Application.routes.draw do
   get '/translate/show' => 'translate#show'
   get '/maps' => 'maps#index'
   get '/maps/search' => 'maps#search'
+  post '/autocomplete' => 'itemsearch#autocomplete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

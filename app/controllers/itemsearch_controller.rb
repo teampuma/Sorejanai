@@ -41,6 +41,16 @@ class ItemsearchController < ApplicationController
     end
   end
 
+  def autocomplete
+    param = params[:keyword]
+    words = Word.where(surface: /^#{param}/).limit(5)
+    result = []
+    words.each do |w|
+      result << {'surface' => w.surface}
+    end
+    render json: result
+  end
+
   private
     def get_one_word
       Word.init
