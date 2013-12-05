@@ -42,23 +42,12 @@ $(function() {
 
 <div class="container-fluid">
 <div class="row-fluid">
-<div class="span6">
+<div class="span8">
 <br>
 <br>
 <br>
 
-<!-- social button -->
-<div id="fb-root"></div>
-<div class="fb-like" data-href="http://sorejanai.herokuapp.com" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false"></div>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sorejanai.herokuapp.com/"  data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
-<div class="g-plusone" data-size="medium"></div>
-<a href="http://b.hatena.ne.jp/entry/http://sorejanai.herokuapp.com" class="hatena-bookmark-button" data-hatena-bookmark-title="Sorejanai Search" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
-  <img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
-</a>
-<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-
-<br><br>
-<%= image_tag("sorejanai.gif", :size => "200x200") %>
+<% if false%>
 <%= image_tag("RMMimgRight.png", :size => "150x150") %>
 <br>
 
@@ -68,12 +57,21 @@ $(function() {
 おおよそ20回検索すると、1個か2個、面白いものが出ることがあります。いや出します。頑張ります。CPUフル回転でお届けします！どうぞお試しください！
 <br>
 <br>
+<% end %>
 
-<form action="<%= search_path %>" method="POST">
+
+<div class="row">
+            <div class="span3">
+                     <%= image_tag("sorejanai.gif", :size => "200x200") %>
+            </div>
+            <div class="span5">
+    <form action="<%= search_path %>" method="POST">
     <input type="input" id="comp" name="keyword" value="<%= @keyword %>" required>
     <input type="submit" value="Search">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </form>
+            </div>
+</div>
 
 
 <% if ! @goods.nil?  && @goods.count > 0%>
@@ -101,17 +99,28 @@ $(function() {
 
 
 </div>
-
-<!--ここから右側のアコーディオンとツイート部分  -->
-<div class="span3 offset2">
+<!--ここからアコーディオン -->
+<div class="span2 offset1">
 	<br><br><br>
 	<div class="accordion" id="accordion2" style='width:300px;'>
 		<div class="accordion-group">
 			<div class="accordion-heading">
-			  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Tweet</a>
+			  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Social</a>
 			</div>
 			<div id="collapseOne" class="accordion-body collapse in">
 				<div class="accordion-inner">
+
+<!-- social button -->
+<div id="fb-root"></div>
+<div class="fb-like" data-href="http://sorejanai.herokuapp.com" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false"></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sorejanai.herokuapp.com/"  data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
+<div class="g-plusone" data-size="medium"></div>
+<a href="http://b.hatena.ne.jp/entry/http://sorejanai.herokuapp.com" class="hatena-bookmark-button" data-hatena-bookmark-title="Sorejanai Search" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+</a>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
 					<a class="twitter-timeline" href="https://twitter.com/search?q=%23Sorejanai" data-widget-id="399862996869971968" width="300" height="300">#Sorejanai に関するツイート</a>
 				</div>
 			</div>
