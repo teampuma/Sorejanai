@@ -109,10 +109,8 @@ $(function() {
     <br><br>
 	<%= form_tag "inc", remote: true do %>
 	  <%= hidden_field_tag 'id', @id %>
-	  <%= submit_tag "それじゃない", :name => 'sore', class: 'btn btn-primary' %>
-	  <%= submit_tag "わるくない", :name => 'waru', class: 'btn btn-info' %>
+	  <%= submit_tag "それじゃない！", :name => 'sore', class: 'btn btn-large btn-primary' %>
 	<% end %>
-    <button class="btn btn-success">座ぶとん一枚</button>
     <br><br><br>
 </ul>
 <% end %>
