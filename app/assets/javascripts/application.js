@@ -15,7 +15,6 @@
 //= require jquery.ui.all
 //= require twitter/bootstrap
 //= require turbolinks
-//= require jquery.socialbutton-1.9.1.min
 //= require underscore
 //= require gmaps/google
 //= require_tree .

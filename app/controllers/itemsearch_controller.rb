@@ -35,7 +35,7 @@ class ItemsearchController < ApplicationController
   def inc
     # 点数をつけるメソッド。
     res = Result.find(params[:id])
-    res.inc(:sorejanai => 1)
+    res.inc(:sorejanai => 10)
     #res.inc(:warukunai => 1)
     result = {'point' => res.sorejanai}
     render json: result
