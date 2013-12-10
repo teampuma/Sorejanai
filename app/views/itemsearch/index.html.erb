@@ -58,6 +58,18 @@ $(function() {
   });
 });
 
+$(function(){
+	var options = {
+		url:'/inc?id=' +  $('#sore_id').val(),
+	    type: "POST",
+	    dataType: "json",
+		success:function(data){
+			$("#point_sore").text(data.point)
+		}
+	};
+	$("#sore").click(function(){$.ajax(options);});
+});
+
 </script>
 
 <div class="container-fluid">
@@ -104,13 +116,21 @@ $(function() {
     <% end%>
     <br><br>
     <button class="btn disabled btn-large">もしかして：<%= @word %></button>
-    <% twitter_url="http://sorejanai.herokuapp.com/show?pid=" + params["pid"] %>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= twitter_url %>  data-text=<%= @tw_text %> data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
     <br><br>
-	<%= form_tag "inc", remote: true do %>
-	  <%= hidden_field_tag 'id', @id %>
-	  <%= submit_tag "それじゃない！", :name => 'sore', class: 'btn btn-large btn-primary' %>
-	<% end %>
+    <%= hidden_field_tag 'sore_id', @id %>
+    <%= button_tag "それじゃない！", :name => 'sore', :id => 'sore', class: 'btn btn-large btn-primary' %> 
+    <span id="point_sore"><%= @point_sore%></span>ポインツ
+    <% twitter_url="http://sorejanai.herokuapp.com/show?pid=" + params["pid"] %>
+<script>
+$(function() {
+    $('.tweet').socialbutton('twitter', {
+    	url: '<%= twitter_url %>',
+        button: 'horizontal',
+        text: '<%= @tw_text %>' + $('#point_sore').text() + 'ポインツ #Sorejanai'
+    });
+});
+</script>
+    <span class="tweet"></span>
     <br><br><br>
 </ul>
 <% end %>

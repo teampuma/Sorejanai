@@ -25,6 +25,7 @@ class ItemsearchController < ApplicationController
     @template=" "
     @goods = Rakutenapi.find_goods(@word)
     @counter = Result.all.count
+    @point_sore = res.sorejanai
     @tw_text = @keyword + "を検索したら" + @word + "が出てきた。。。"
     # rescue HTTPClient::BadResponseError => e
     # rescue HTTPClient::TimeoutError => e
@@ -34,11 +35,10 @@ class ItemsearchController < ApplicationController
   def inc
     # 点数をつけるメソッド。
     res = Result.find(params[:id])
-    if params[:sore] then
-      res.inc(:sorejanai => 1)
-    else
-      res.inc(:warukunai => 1)
-    end
+    res.inc(:sorejanai => 1)
+    #res.inc(:warukunai => 1)
+    result = {'point' => res.sorejanai}
+    render json: result
   end
 
   def autocomplete
