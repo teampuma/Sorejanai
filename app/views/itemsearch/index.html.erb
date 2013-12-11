@@ -104,15 +104,34 @@ $(function() {
     <% end%>
     <br><br>
     <button class="btn disabled btn-large">もしかして：<%= @word %></button>
-    <% twitter_url="http://sorejanai.herokuapp.com/show?pid=" + params["pid"] %>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= twitter_url %>  data-text=<%= @tw_text %> data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
     <br><br>
-	<%= form_tag "inc", remote: true do %>
-	  <%= hidden_field_tag 'id', @id %>
-	  <%= submit_tag "それじゃない", :name => 'sore', class: 'btn btn-primary' %>
-	  <%= submit_tag "わるくない", :name => 'waru', class: 'btn btn-info' %>
-	<% end %>
-    <button class="btn btn-success">座ぶとん一枚</button>
+    <%= hidden_field_tag 'sore_id', @id %>
+    <%= button_tag "それじゃない！", :name => 'sore', :id => 'sore', class: 'btn btn-large btn-primary' %> 
+    <span id="point_sore"><%= @point_sore%></span>ポインツ
+    <% twitter_url="http://sorejanai.herokuapp.com/show?pid=" + params["pid"] %>
+    <span id="tweet_point">
+    	<a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= twitter_url %>  data-text=<%= @tw_text+@point_sore.to_s+"ポインツ" %> data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
+    </span>
+<script>
+var point = 0;
+$(function(){
+	var options = {
+		url:'/inc?id=' +  $('#sore_id').val(),
+	    type: "POST",
+	    dataType: "json",
+		success:function(data){
+			$("#point_sore").text(data.point);
+			point = data.point;
+			$("#tweet_point").html('<a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= twitter_url %>  data-text="<%= @tw_text %>'+ point + 'ポインツ " data-lang="ja" data-hashtags="Sorejanai">ツイート</a>')
+			twttr.widgets.load();
+		}
+	};
+	$("#sore").click(function(){
+		$.ajax(options);
+	});
+});
+
+</script>
     <br><br><br>
 </ul>
 <% end %>
