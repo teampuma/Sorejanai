@@ -1,16 +1,37 @@
 <script>
+//facebook 
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
 //twitter
 !function(d,s,id){
-  var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+  var js,fjs=d.getElementsByTagName(s)[0],
+  p=/^http:/.test(d.location)?'http':'https';
   if(!d.getElementById(id)){
     js=d.createElement(s);
     js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
     fjs.parentNode.insertBefore(js,fjs);
-    }
-  }(document, 'script', 'twitter-wjs');
+  }
+}(document, 'script', 'twitter-wjs');
+//google plus
+window.___gcfg = {lang: 'ja'};
+(function() {
+        var po = document.createElement('script'); po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+})();
 </script>
 
+
 <br><br><br>
+<% if false %>
 <%= image_tag("RMMimage.png", :size => "150x150") %>
 <br><br>
 
@@ -21,15 +42,52 @@
 俳句や川柳くらいの長さの文章ですと、ソコソコ行けるときもございます。<br>
 どうぞお試しください！
 <br><br>
+<% end %>
 
-<form action="<%= translate_show_path %>" method="GET">
-<div>
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span12">
+<div class="row">
+            <div class="span3">
+                     <%= image_tag("sorejanai.gif", :size => "150x150") %>
+            </div>
+            <div class="span6">
+	             <form action="<%= translate_show_path %>" method="GET">
 	<textarea name="translation" cols="40" rows="5"　required><%= @cause %></textarea>
-	<%= show_translation @result %>
+	<br><%= show_translation @result %>
 	<a href="https://twitter.com/share" class="twitter-share-button" data-text=<%= "http://sorejanai.herokuapp.com/translate/show?translation=" + @cause %> data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
-</div>
 <div>
 	<input type="submit" value="翻訳">
 </div>
+</div>
 </form>
 
+<!--ここからアコーディオン -->
+<div class="span2 offset1">
+        <div class="accordion" id="accordion2" style='width:300px;'>
+                <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Social</a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                                <div class="accordion-inner">
+
+<!-- social button -->
+<div id="fb-root"></div>
+<div class="fb-like" data-href="http://sorejanai.herokuapp.com" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false"></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sorejanai.herokuapp.com/"  data-lang="ja" data-hashtags="Sorejanai">ツイート</a>
+<div class="g-plusone" data-size="medium"></div>
+<a href="http://b.hatena.ne.jp/entry/http://sorejanai.herokuapp.com" class="hatena-bookmark-button" data-hatena-bookmark-title="Sorejanai Search" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+</a>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+                                        <a class="twitter-timeline" href="https://twitter.com/search?q=%23Sorejanai" data-widget-id="399862996869971968" width="300" height="300">#Sorejanai に関するツイート</a>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>
+
+</div>                                 
