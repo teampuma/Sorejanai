@@ -3,21 +3,31 @@
 <br>
 <br>
 <br>
-<style type="text/css">
-	#map img { max-width: none; }
-	#map label { width: auto; display:inline; }
-</style>
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
+<div class="row">
+            <div class="span2">
+		<%= image_tag("map.gif", :size => "150x150") %>
+	    </div>
+	    <div class="span5">
 <%= form_tag "/maps/search", {:method=>"get"} do %>
     <input type="input" name="keyword" value="<%= @keyword %>" required>
     <input type="submit" value="Search">
 <% end %>
+	    </div>
+</div>
 
-<%= image_tag("map.gif", :size => "150x150") %>
+<style type="text/css">
+	#map img { max-width: none; }
+	#map label { width: auto; display:inline; }
+</style>
+
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<% if false%>
 <%= image_tag("RMMimgRight.png", :size => "150x150") %>
-
+<% end %>
 
 <script type="text/javascript">
 handler = Gmaps.build('Google');
