@@ -103,7 +103,8 @@ $(function() {
     	<img src=<%= image.imageUrl%> alt="画像がありません" width=100 height=100>
     <% end%>
     <br><br>
-    <button class="btn disabled btn-large">もしかして：<%= @word + content_tag(:rt, @word.chg_reading) %></button>
+    <button class="btn disabled btn-large">もしかして：<%= raw(content_tag(:ruby) { content_tag(:rb, content_tag(:b, @word) ) + content_tag(:rt, @yomigana ) } ) %>
+    </button>
     <br><br>
     <%= hidden_field_tag 'sore_id', @id %>
     <%= button_tag "それじゃない！", :name => 'sore', :id => 'sore', class: 'btn btn-large btn-primary' %> 

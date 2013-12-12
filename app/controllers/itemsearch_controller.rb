@@ -21,6 +21,7 @@ class ItemsearchController < ApplicationController
     @id = res.id
     @keyword = res.search
     @word = res.result
+    @yomigana = Yahooapi.get_hiragana(@word)
     @errorMeg = nil
     @template=" "
     @goods = Rakutenapi.find_goods(@word)
