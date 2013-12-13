@@ -85,6 +85,7 @@ $(function() {
                      <%= image_tag("sorejanai.gif", :size => "200x200") %>
             </div>
             <div class="span6">
+    <% @keyword="ガム"%>
     <form action="<%= search_path %>" method="POST">
     <input type="input" id="comp" name="keyword" value="<%= @keyword %>" required>
     <input type="submit" value="Search">
